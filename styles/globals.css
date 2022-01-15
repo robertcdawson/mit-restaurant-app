@@ -17,26 +17,6 @@ a {
   box-sizing: border-box;
 }
 
-.paper {
-  border: 1px solid lightgray;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
-    0px 1px 1px 0px rgba(0, 0, 0, 0.14),
-    0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-  height: 550px;
-  padding: 30px;
-  background: #fff;
-  border-radius: 6px;
-  margin-top: 90px;
-}
-
-.form-half {
-  flex: 0.5;
-}
-
-* {
-  box-sizing: border-box;
-}
-
 h1 {
   color: #32325d;
   font-weight: 400;
@@ -44,13 +24,6 @@ h1 {
   font-size: 40px;
   margin: 20px 0;
   padding: 0;
-}
-
-.Checkout {
-  margin: 0 auto;
-  max-width: 800px;
-  box-sizing: border-box;
-  padding: 0 5px;
 }
 
 label {
@@ -80,12 +53,6 @@ button {
   -webkit-transition: all 150ms ease;
   transition: all 150ms ease;
   margin-top: 10px;
-}
-
-form {
-  margin-bottom: 40px;
-  padding-bottom: 40px;
-  border-bottom: 3px solid #e6ebf1;
 }
 
 button:hover {
@@ -126,6 +93,29 @@ input:focus,
   transition: all 150ms ease;
 }
 
+.paper {
+  border: 1px solid lightgray;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+    0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  height: auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 6px;
+  margin: 10px;
+}
+
+.form-half {
+  flex: 0.5;
+}
+
+.Checkout {
+  margin: 0 auto;
+  max-width: 800px;
+  box-sizing: border-box;
+  padding: 0 5px;
+}
+
 .StripeElement.IdealBankElement,
 .StripeElement.PaymentRequestButton {
   padding: 0;
@@ -157,4 +147,20 @@ input:focus,
 
 .padding-large {
   padding: 20px;
+}
+
+.notification {
+  color: #ab003c;
+}
+
+.header {
+  width: 100%;
+  height: 120px;
+  background-color: #2196f3;
+  margin-bottom: 30px;
+  border-radius-top: 6px;
+}
+
+.wrapper {
+  padding: 10px 30px 20px 30px !important;
 }

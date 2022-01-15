@@ -7,8 +7,10 @@ import { Container, Nav, NavItem } from "reactstrap";
 import AppContext from "./context";
 
 const Layout = (props) => {
-const title = "Welcome to Nextjs";
-const {user} = useContext(AppContext);
+  const title = "Welcome to Nextjs";
+  const { user, setUser, cart } = useContext(AppContext);
+  console.log("user", user);
+  console.log("cart", cart);
   return (
     <div>
       <Head>

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import Head from "next/head";
 import AppContext from "../components/context";
 import Home from "./index";
@@ -8,14 +8,26 @@ import "../styles/globals.css";
 
 
 function MyApp(props){
-  var {cart,addItem,removeItem, user, setUser} = useContext(AppContext);
+  var {cart, addItem, removeItem, user, setUser} = useContext(AppContext);
   const [state,setState] = useState({cart:cart});
   const { Component, pageProps } = props;
+
+  console.log("state", state);
   
   
   setUser = (user) => {
-    setState({ user });
+    console.log("{cart, user}", {cart, user});
+    setState({cart, user});
   };
+
+  useEffect(() => {
+    console.log("in useEffect:");
+    console.log("state", state);
+    console.log("cart", cart);
+    console.log("user", user);
+    console.log("---");
+  }, [state]);
+
   addItem = (item) => {
     let { items } = state.cart;
     //check for item already in cart
@@ -57,6 +69,7 @@ function MyApp(props){
     }
     setState({cart: newCart});  // problem is this is not updated yet
     console.log(`state reset to cart:${JSON.stringify(state)}`)
+    console.log("user ***", user);
      
   };
   removeItem = (item) => {
@@ -73,9 +86,7 @@ function MyApp(props){
       }}),
       total: state.cart.total - item.price,
       }
-      //console.log(`NewCart after remove: ${JSON.stringify(newCart)}`)
     } else { // only 1 in the cart so remove the whole item
-      console.log(`Try remove item ${JSON.stringify(foundItem)}`)
       const index = items.findIndex((i) => i.id === foundItem.id);
       items.splice(index, 1);
       var newCart= { items: items, total: state.cart.total - item.price } 
@@ -84,7 +95,7 @@ function MyApp(props){
   }
 
   return (
-    <AppContext.Provider value={{cart: state.cart, addItem: addItem, removeItem: removeItem,isAuthenticated:false,user:null,setUser:()=>{}}}>
+    <AppContext.Provider value={{ cart: state.cart, addItem: addItem, removeItem: removeItem, isAuthenticated: false, user: state.user, setUser: setUser}}>
       <Head>
         <link
           rel="stylesheet"
