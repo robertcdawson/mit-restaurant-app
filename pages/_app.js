@@ -52,7 +52,7 @@ function MyApp(props){
           items: [...state.cart.items,temp],
           total: state.cart.total + item.price,
       }
-      setState({cart:newCart})
+      setState({cart:newCart, user})
       console.log(`Total items: ${JSON.stringify(newCart)}`)
     } else {
       // we already have it so just increase quantity ++
@@ -67,7 +67,7 @@ function MyApp(props){
           total: state.cart.total + item.price,
         }
     }
-    setState({cart: newCart});  // problem is this is not updated yet
+    setState({cart: newCart, user});  // problem is this is not updated yet
     console.log(`state reset to cart:${JSON.stringify(state)}`)
     console.log("user ***", user);
      
@@ -91,7 +91,7 @@ function MyApp(props){
       items.splice(index, 1);
       var newCart= { items: items, total: state.cart.total - item.price } 
     }
-    setState({cart:newCart});
+    setState({cart:newCart, user});
   }
 
   return (

@@ -149,10 +149,6 @@ input:focus,
   padding: 20px;
 }
 
-.notification {
-  color: #ab003c;
-}
-
 .header {
   width: 100%;
   height: 120px;
@@ -163,4 +159,13 @@ input:focus,
 
 .wrapper {
   padding: 10px 30px 20px 30px !important;
+}
+
+.notification {
+  padding: 1rem;
+  margin: 1rem 0;
+  color: #444;
+  background: #eee;
+  border: solid 1px #ddd;
+  border-radius: 1rem;
 }

@@ -24,11 +24,11 @@ function Login(props) {
 
   console.log("appContext", appContext);
 
-  useEffect(() => {
-    if (appContext.isAuthenticated) {
-      router.push("/"); // redirect if you're already logged in
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (appContext.isAuthenticated) {
+  //     router.push("/"); // redirect if you're already logged in
+  //   }
+  // }, []);
 
   function onChange(event) {
     updateData({ ...data, [event.target.name]: event.target.value });
