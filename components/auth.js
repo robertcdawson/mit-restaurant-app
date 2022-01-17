@@ -60,6 +60,7 @@ export const login = (identifier, password) => {
 export const logout = () => {
   //remove token and user cookie
   Cookie.remove("token");
+  Cookie.remove("username");
   delete window.__user;
   // sync logout between multiple windows
   window.localStorage.setItem("logout", Date.now());

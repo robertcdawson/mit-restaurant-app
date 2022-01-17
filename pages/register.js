@@ -14,6 +14,7 @@ import {
 } from "reactstrap";
 import { registerUser } from "../components/auth";
 import AppContext from "../components/context";
+import Cookie from "js-cookie";
 
 const Register = () => {
   const [data, setData] = useState({ email: "", username: "", password: "" });
@@ -23,6 +24,13 @@ const Register = () => {
   const appContext = useContext(AppContext);
   if (Object.entries(error).length !== 0 && error.constructor === Object) {
     console.log("error", error);
+  }
+  const userToken = Cookie.get("token");
+
+  if (userToken) {
+    console.log("userToken", userToken);
+  } else {
+    console.log("no token");
   }
   return (
     <Container>
@@ -106,6 +114,7 @@ const Register = () => {
                                 appContext.setUser(res.data.user);
                                 setLoading(false);
                                 console.log(`registered user: ${JSON.stringify(res.data)}`)
+                                Cookie.set("username", res.data.user.username);
                                 setSubmitted(true);
                               })
                               .catch((error) => {

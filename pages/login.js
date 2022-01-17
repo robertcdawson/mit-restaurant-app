@@ -14,6 +14,7 @@ import {
 } from "reactstrap";
 import { login } from "../components/auth";
 import AppContext from "../components/context";
+import Cookie from "js-cookie";
 
 function Login(props) {
   const [data, updateData] = useState({ identifier: "", password: "" });
@@ -90,8 +91,10 @@ function Login(props) {
                             // set authed User in global context to update header/app state
                             console.log("res.data.user", res.data.user);
                             appContext.setUser(res.data.user);
+                            Cookie.set("username", res.data.user.username);
                           })
                           .catch((error) => {
+                            console.log("error", error);
                             setError(error.response.data);
                             setLoading(false);
                           });

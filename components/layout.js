@@ -1,16 +1,29 @@
 /* /components/Layout.js */
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { Container, Nav, NavItem } from "reactstrap";
 import AppContext from "./context";
+import Cookie from "js-cookie";
+import { logout } from "./auth";
 
 const Layout = (props) => {
   const title = "Welcome to Nextjs";
   const { user, setUser, cart } = useContext(AppContext);
+  const [username, setUsername] = useState(undefined);
+
+  useEffect(() => {
+    setUsername(Cookie.get("username"));
+  }, []);
+
+  useEffect(() => {
+    if (username && !user) setUser(username);
+  }, [username, user]);
+
+  console.log("username", username);
   console.log("user", user);
-  console.log("cart", cart);
+
   return (
     <div>
       <Head>
@@ -26,17 +39,6 @@ const Layout = (props) => {
         <script src="https://js.stripe.com/v3" />
       </Head>
       <header>
-        <style jsx>
-          {`
-            a {
-              color: white;
-            }
-            h5 {
-              color: white;
-              padding-top: 11px;
-            }
-          `}
-        </style>
         <Nav className="navbar navbar-dark bg-dark">
           <NavItem>
             <Link href="/">
@@ -44,8 +46,8 @@ const Layout = (props) => {
             </Link>
           </NavItem>
           <NavItem className="ml-auto">
-            {user ? (
-              <h5>{user.username}</h5>
+            {user || username ? (
+              <h5>{username ? username : user.username}</h5>
             ) : (
               <Link href="/register">
                 <a className="nav-link">Sign up</a>
@@ -53,7 +55,7 @@ const Layout = (props) => {
             )}
           </NavItem>
           <NavItem>
-            {user ? (
+            {user || username ? (
               <Link href="/">
                 <a
                   className="nav-link"

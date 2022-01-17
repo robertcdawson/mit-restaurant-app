@@ -17,6 +17,15 @@ a {
   box-sizing: border-box;
 }
 
+header a {
+  color: white;
+}
+
+header h5 {
+  color: white;
+  padding-top: 11px;
+}
+
 h1 {
   color: #32325d;
   font-weight: 400;
