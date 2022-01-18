@@ -8,14 +8,16 @@ function Home() {
   const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337";
   console.log(`URL: ${API_URL}`)
   const [query, setQuery] = useState("");
-  const link = new HttpLink({ uri: `${API_URL}/graphql` })
-  const cache = new InMemoryCache()
+  const link = new HttpLink({ uri: `${API_URL}/graphql` });
+  const cache = new InMemoryCache();
   const client = new ApolloClient({ link, cache });
 
   return (
     <ApolloProvider client={client}>
+      <header className="padding-large">
+        <h1>Local Restaurants</h1>
+      </header>
       <div className="search">
-        <h2> Local Restaurants</h2>
         <InputGroup>
           <InputGroupAddon addonType="append"> Search </InputGroupAddon>
           <Input
@@ -27,7 +29,7 @@ function Home() {
         </InputGroup><br></br>
       </div>
       <RestaurantList search={query} />
-      <Cart> </Cart>
+      <Cart></Cart>
     </ApolloProvider>
   );
 }

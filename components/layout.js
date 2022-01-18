@@ -21,9 +21,6 @@ const Layout = (props) => {
     if (username && !user) setUser(username);
   }, [username, user]);
 
-  console.log("username", username);
-  console.log("user", user);
-
   return (
     <div>
       <Head>
