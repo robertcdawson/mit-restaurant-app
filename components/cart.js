@@ -13,7 +13,7 @@ function Cart() {
   
   const renderItems = () => {
     let { items } = cart;
-    console.log(`items: ${JSON.stringify(items)}`)
+    console.log(`items: ${JSON.stringify(items)}`);
     if (items && items.length) {
       var itemList = cart.items.map((item) => {
         if (item.quantity > 0) {
@@ -75,11 +75,13 @@ function Cart() {
           <h5 style={{ fontWeight: 100, color: "gray" }}>Total:</h5>
           <h3>${cart.total}</h3>
         </Badge>
-        <Link href="/checkout/">
-          <Button style={{ width: "10%" }} color="primary">
-            <a>Order</a>
-          </Button>
-        </Link>
+        {router.asPath !== '/checkout' && (
+          <Link href="/checkout/">
+            <Button style={{ width: "10%" }} color="primary">
+              <a>Order</a>
+            </Button>
+          </Link>
+        )}
       </div>
     )
   }
