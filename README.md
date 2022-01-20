@@ -23,7 +23,7 @@ Note: This app uses [React Context](https://reactjs.org/docs/context.html) and S
 
 Clone this repo:
 
-`git clone https://github.com/robertcdawson/mit-bad-bank.git`.
+`git clone https://github.com/robertcdawson/mit-bad-bank.git`
 
 In the project's root directory, run:
 
